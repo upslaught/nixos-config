@@ -12,7 +12,7 @@
       keybindings = lib.mkOptionDefault {
         "${modifier}+w" = "exec ${pkgs.brave}/bin/brave"; # [w]eb browser
         "${modifier}+d" = "exec ${pkgs.fuzzel}/bin/fuzzel"; # [d]run (???)
-        "${modifier}+Shift+s" = "exec selection=$(slurp) && grim -g \"$selection\" - | tee ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy";
+        "${modifier}+Shift+s" = "exec selection=$(${pkgs.slurp}/bin/slurp) && ${pkgs.grim}/grim -g \"$selection\" - | tee ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | ${pkgs.wl-clipboard}/bin/wl-copy";
       };
 
       input = {
