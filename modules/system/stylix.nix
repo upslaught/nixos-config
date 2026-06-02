@@ -4,14 +4,17 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/chalk.yaml";
     autoEnable = true;
 
-    # image = pkgs.runCommand "wallpaper.png" { buildInputs = [ pkgs.imagemagick ]; } ''
-    #   convert -size 1920x1080 xc:#32302f $out
-    # '';
+    targets.kmscon.enable = false;
+
+    image = pkgs.fetchurl {
+      url = "https://w.wallhaven.cc/full/01/wallhaven-01kl31.jpg";
+      hash = "sha256-m5LSpyn67y7TOI0p54IYk7DYO9Nb0ahiN3sTgrAsU6Q=";
+    };
 
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Classic";
-      size = 32;
+      size = 24;
     };
 
     icons = {
