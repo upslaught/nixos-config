@@ -7,5 +7,6 @@
     ./cli.nix
     ./helix.nix
     ./brave.nix
+    ./ssh.nix
   ];
 }
