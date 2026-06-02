@@ -1,8 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [xdg-utils wl-clipboard];
   programs = {
     # i wouldn't consider this a cli but whatever
-    foot.enable = true;
+    foot = {
+      enable = true;
+      settings.main.font = "${config.stylix.fonts.sansSerif.name}:size=16";
+    };
 
     bat.enable = true;
     eza.enable = true;

@@ -5,7 +5,6 @@
   inputs,
   ...
 }: {
-  programs.fuzzel.enable = true;
   programs.i3status-rust = {
     enable = true;
     bars = {
@@ -69,6 +68,10 @@
       window = {
         border = 1;
       };
+
+      startup = [
+        {command = "wl-paste --watch cliphist store";}
+      ];
 
       colors = lib.mkForce {
         focused = {
@@ -143,6 +146,7 @@
         "${modifier}+w" = "exec ${pkgs.brave}/bin/brave"; # [w]eb browser
         "${modifier}+d" = "exec ${pkgs.fuzzel}/bin/fuzzel"; # [d]run (???)
         "${modifier}+Shift+s" = "exec selection=$(${pkgs.slurp}/bin/slurp) && ${pkgs.grim}/grim -g \"$selection\" - | tee ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | ${pkgs.wl-clipboard}/bin/wl-copy";
+        "${modifier}+v" = "exec ${pkgs.cliphist}/bin/cliphist list | ${pkgs.fuzzel}/bin/fuzzel -d | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy"; # it's like that on windows
 
         # brightness
         "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl -U 10";

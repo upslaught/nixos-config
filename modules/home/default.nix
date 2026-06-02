@@ -9,5 +9,6 @@
     ./brave.nix
     ./ssh.nix
     ./devenv.nix
+    ./fuzzel.nix
   ];
 }
