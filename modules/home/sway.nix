@@ -149,9 +149,9 @@
         "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl -A 10";
 
         # volume
-        "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-sink-volume @DEFAULT_SINK@ +1%";
-        "XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-sink-volume @DEFAULT_SINK@ -1%";
-        "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-sink-mute @DEFAULT_SINK@ toggle";
+        "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+";
+        "XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-";
+        "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
       };
 
       output."DP-1" = {
