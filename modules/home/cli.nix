@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   home.packages = with pkgs; [xdg-utils wl-clipboard];
@@ -8,7 +9,7 @@
     # i wouldn't consider this a cli but whatever
     foot = {
       enable = true;
-      settings.main.font = "${config.stylix.fonts.sansSerif.name}:size=16";
+      settings.main.font = lib.mkForce "${config.stylix.fonts.monospace.name}:size=16";
     };
 
     bat.enable = true;
