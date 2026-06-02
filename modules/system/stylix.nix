@@ -4,7 +4,9 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/chalk.yaml";
     autoEnable = true;
 
-    targets.kmscon.enable = false;
+    targets = {
+      kmscon.enable = false; # doesn't work on 26.11
+    };
 
     image = pkgs.fetchurl {
       url = "https://w.wallhaven.cc/full/01/wallhaven-01kl31.jpg";
@@ -30,6 +32,10 @@
         name = "IBM Plex Sans";
       };
 
+      serif = {
+        package = pkgs.ibm-plex;
+        name = "IBM Plex Serif";
+      };
       monospace = {
         package = pkgs.nerd-fonts.iosevka;
         name = "Iosevka Nerd Font";

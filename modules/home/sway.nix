@@ -1,14 +1,143 @@
 {
   pkgs,
   lib,
+  config,
+  inputs,
   ...
 }: {
+  programs.fuzzel.enable = true;
+  programs.i3status-rust = {
+    enable = true;
+    bars = {
+      default = {
+        blocks = [
+          {
+            block = "net";
+            format = " ⇡ $speed_up ⇣ $speed_down ";
+            interval = 5;
+          }
+          {
+            block = "cpu";
+            format = " $icon  $utilization ";
+            interval = 5;
+          }
+          {
+            block = "memory";
+            format = " $icon  $mem_used.eng(w:1)/$mem_total.eng(w:1) ";
+            interval = 5;
+          }
+          {
+            block = "temperature";
+            format = " $icon $maxC ";
+            interval = 5;
+          }
+          {
+            block = "time";
+            format = " $icon  $timestamp.datetime(f:'%m/%d/%y %R') ";
+            interval = 60;
+          }
+        ];
+        settings = {
+          theme = {
+            theme = "solarized-dark";
+            overrides = {
+              idle_bg = "#${config.lib.stylix.colors.base01}";
+              idle_fg = "#${config.lib.stylix.colors.base06}";
+              info_bg = "#${config.lib.stylix.colors.base0D}";
+              info_fg = "#${config.lib.stylix.colors.base00}";
+              good_bg = "#${config.lib.stylix.colors.base0B}";
+              good_fg = "#${config.lib.stylix.colors.base00}";
+              warning_bg = "#${config.lib.stylix.colors.base0A}";
+              warning_fg = "#${config.lib.stylix.colors.base00}";
+              critical_bg = "#${config.lib.stylix.colors.base08}";
+              critical_fg = "#${config.lib.stylix.colors.base00}";
+              separator = " ";
+            };
+          };
+          icons = {
+            icons = "material-nf";
+          };
+        };
+      };
+    };
+  };
+
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
     config = rec {
-      modifier = "Mod4";
+      window = {
+        border = 1;
+      };
 
+      colors = lib.mkForce {
+        focused = {
+          border = "#${config.lib.stylix.colors.base02}";
+          background = "#${config.lib.stylix.colors.base02}";
+          text = "#${config.lib.stylix.colors.base06}";
+          indicator = "#${config.lib.stylix.colors.base02}";
+          childBorder = "#${config.lib.stylix.colors.base02}";
+        };
+        focusedInactive = {
+          border = "#${config.lib.stylix.colors.base02}";
+          background = "#${config.lib.stylix.colors.base01}";
+          text = "#${config.lib.stylix.colors.base06}";
+          indicator = "#${config.lib.stylix.colors.base02}";
+          childBorder = "#${config.lib.stylix.colors.base02}";
+        };
+        unfocused = {
+          border = "#${config.lib.stylix.colors.base02}";
+          background = "#${config.lib.stylix.colors.base01}";
+          text = "#${config.lib.stylix.colors.base04}";
+          indicator = "#${config.lib.stylix.colors.base02}";
+          childBorder = "#${config.lib.stylix.colors.base02}";
+        };
+        urgent = {
+          border = "#${config.lib.stylix.colors.base08}";
+          background = "#${config.lib.stylix.colors.base08}";
+          text = "#${config.lib.stylix.colors.base00}";
+          indicator = "#${config.lib.stylix.colors.base08}";
+          childBorder = "#${config.lib.stylix.colors.base08}";
+        };
+      };
+
+      bars = [
+        {
+          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+          fonts = {
+            names = [config.stylix.fonts.sansSerif.name config.stylix.fonts.monospace.name];
+            size = 10.0;
+          };
+          position = "top";
+          colors = {
+            background = "#${config.lib.stylix.colors.base01}";
+            statusline = "#${config.lib.stylix.colors.base06}";
+            separator = "#${config.lib.stylix.colors.base02}";
+            focusedWorkspace = {
+              border = "#${config.lib.stylix.colors.base09}";
+              background = "#${config.lib.stylix.colors.base02}";
+              text = "#${config.lib.stylix.colors.base06}";
+            };
+            activeWorkspace = {
+              border = "#${config.lib.stylix.colors.base02}";
+              background = "#${config.lib.stylix.colors.base01}";
+              text = "#${config.lib.stylix.colors.base06}";
+            };
+            inactiveWorkspace = {
+              border = "#${config.lib.stylix.colors.base01}";
+              background = "#${config.lib.stylix.colors.base01}";
+              text = "#${config.lib.stylix.colors.base06}";
+            };
+            urgentWorkspace = {
+              border = "#${config.lib.stylix.colors.base08}";
+              background = "#${config.lib.stylix.colors.base08}";
+              text = "#${config.lib.stylix.colors.base01}";
+            };
+          };
+        }
+      ];
+
+      modifier = "Mod4";
       keybindings = lib.mkOptionDefault {
         # programs
         "${modifier}+w" = "exec ${pkgs.brave}/bin/brave"; # [w]eb browser
@@ -25,9 +154,8 @@
         "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-sink-mute @DEFAULT_SINK@ toggle";
       };
 
-      # is there a way to do this per-host?
       output."DP-1" = {
-        mode = "1920x1080@179.998Hz"; # where did my other .002 hz go :C
+        mode = "1920x1080@179.998Hz";
       };
 
       input."*" = {

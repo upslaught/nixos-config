@@ -2,12 +2,14 @@
   programs.helix = {
     enable = true;
     settings = {
-      editor.cursor-shape = {
-        normal = "block";
-        insert = "bar";
-        select = "underline";
+      editor = {
+        line-number = "relative";
+        cursor-shape = {
+          normal = "block";
+          insert = "bar";
+          select = "underline";
+        };
       };
-      editor.line-number = "relative";
     };
 
     languages.language = [

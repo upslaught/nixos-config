@@ -8,5 +8,6 @@
     ./helix.nix
     ./brave.nix
     ./ssh.nix
+    ./devenv.nix
   ];
 }
