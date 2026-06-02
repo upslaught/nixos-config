@@ -16,6 +16,7 @@
     ../../modules/system/brave-policies
     ../../modules/system/warp.nix
     ../../modules/system/nh.nix
+    ../../modules/system/greetd.nix
   ];
 
   security.rtkit.enable = true;
