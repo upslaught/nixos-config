@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.xdg-utils];
+  home.packages = with pkgs; [xdg-utils wl-clipboard];
   programs = {
     # i wouldn't consider this a cli but whatever
     foot.enable = true;
