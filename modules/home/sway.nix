@@ -11,24 +11,32 @@
       default = {
         blocks = [
           {
+            block = "music";
+          }
+          {
             block = "net";
             format = " ⇡ $speed_up ⇣ $speed_down ";
-            interval = 5;
+            interval = 1;
           }
           {
             block = "cpu";
             format = " $icon  $utilization ";
-            interval = 5;
+            interval = 1;
           }
           {
             block = "memory";
             format = " $icon  $mem_used.eng(w:1)/$mem_total.eng(w:1) ";
-            interval = 5;
+            format_alt = " $icon  $mem_used_percents.eng(w:1) ";
+            interval = 1;
           }
           {
-            block = "temperature";
-            format = " $icon $maxC ";
-            interval = 5;
+            block = "weather";
+            format = " $icon  $weather, $temp ";
+            autolocate = true;
+            service.name = "metno";
+          }
+          {
+            block = "sound"; # that's fine for me
           }
           {
             block = "time";
