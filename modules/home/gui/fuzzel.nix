@@ -1,8 +1,8 @@
 {
   config,
-  pkgs,
   ...
-}: {
+}:
+{
   stylix.targets.fuzzel.enable = false;
 
   programs.fuzzel = {
