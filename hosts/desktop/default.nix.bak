@@ -10,6 +10,7 @@
     ./disko.nix
     ../shared.nix
     ../../modules/system/preservation.nix
+    # ../../modules/system/plasma.nix
     ../../modules/system/kdeconnect.nix
     ../../modules/system/stylix.nix
     ../../modules/system/brave-policies
@@ -20,14 +21,10 @@
 
   security.rtkit.enable = true;
 
-  services = {
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      pulse.enable = true;
-    };
-
-    power-profiles-daemon.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
   };
 
   networking = {

@@ -2,8 +2,8 @@
   imports = [
     ./fish.nix
     ./git.nix
+    # ./plasma.nix
     ./sway.nix
-    ./mako.nix
     ./cli.nix
     ./helix.nix
     ./brave.nix
