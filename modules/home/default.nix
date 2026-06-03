@@ -10,5 +10,6 @@
     ./ssh.nix
     ./devenv.nix
     ./fuzzel.nix
+    ./social.nix
   ];
 }

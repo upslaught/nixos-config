@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  home.packages = with pkgs; [xdg-utils wl-clipboard];
+  home.packages = with pkgs; [xdg-utils wl-clipboard antigravity-cli];
 
   programs = {
     foot = {
