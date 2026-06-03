@@ -16,7 +16,6 @@
     eza.enable = true;
     btop.enable = true;
     fd.enable = true;
-
     zoxide = {
       enable = true;
       options = ["--cmd cd"];
