@@ -9,8 +9,8 @@
     };
 
     image = pkgs.fetchurl {
-      url = "https://w.wallhaven.cc/full/01/wallhaven-01kl31.jpg";
-      hash = "sha256-m5LSpyn67y7TOI0p54IYk7DYO9Nb0ahiN3sTgrAsU6Q=";
+      url = "https://w.wallhaven.cc/full/01/wallhaven-01k9yg.jpg";
+      hash = "sha256-wOsO8rGWosQ7dErko3BXqUDssHUVSRiJmbmRGZueaYo=";
     };
 
     cursor = {

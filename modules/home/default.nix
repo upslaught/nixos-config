@@ -11,5 +11,6 @@
     ./devenv.nix
     ./fuzzel.nix
     ./social.nix
+    ./zed.nix
   ];
 }

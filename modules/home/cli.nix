@@ -3,9 +3,16 @@
   config,
   lib,
   ...
-}: {
-  home.packages = with pkgs; [xdg-utils wl-clipboard antigravity-cli];
-  home.sessionVariables.NIXOS_OZONE_WL = "1"; # not sure where to put this
+}:
+{
+  home.packages = with pkgs; [
+    xdg-utils
+    wl-clipboard
+  ];
+  home.sessionVariables = {
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    NIXOS_OZONE_WL = "1"; # not sure where to put this
+  };
 
   programs = {
     foot = {
@@ -19,7 +26,7 @@
     fd.enable = true;
     zoxide = {
       enable = true;
-      options = ["--cmd cd"];
+      options = [ "--cmd cd" ];
     };
   };
 }
