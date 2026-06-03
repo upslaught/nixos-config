@@ -4,7 +4,8 @@
   hostname,
   stateVersion,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware.nix
     ./disko.nix
@@ -16,6 +17,7 @@
     ../../modules/system/warp.nix
     ../../modules/system/nh.nix
     ../../modules/system/sway.nix
+    ../../modules/system/ld.nix
   ];
 
   security.rtkit.enable = true;
@@ -50,7 +52,7 @@
     };
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   system.stateVersion = stateVersion;
 }
