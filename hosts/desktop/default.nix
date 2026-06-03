@@ -20,10 +20,10 @@
     ../../modules/system/ld.nix
   ];
 
-  environment.pathsToLink = [
-    "/share/applications"
-    "/share/xdg-desktop-portal"
-  ];
+  # environment.pathsToLink = [
+  #   "/share/applications"
+  #   "/share/xdg-desktop-portal"
+  # ];
   security.rtkit.enable = true;
 
   services = {
