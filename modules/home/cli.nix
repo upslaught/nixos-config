@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  home.packages = with pkgs; [xdg-utils wl-clipboard];
+  home.packages = with pkgs; [antigravity-cli xdg-utils wl-clipboard];
 
   programs = {
     foot = {
@@ -16,7 +16,6 @@
     eza.enable = true;
     btop.enable = true;
     fd.enable = true;
-
     zoxide = {
       enable = true;
       options = ["--cmd cd"];
