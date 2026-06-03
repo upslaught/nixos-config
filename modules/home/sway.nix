@@ -149,7 +149,7 @@
         # programs
         "${modifier}+w" = "exec ${pkgs.brave}/bin/brave"; # [w]eb browser
         "${modifier}+d" = "exec ${pkgs.fuzzel}/bin/fuzzel"; # [d]run (???)
-        "${modifier}+Shift+s" = "exec mkdir -p ~/Pictures/Screenshots && selection=$(${pkgs.slurp}/bin/slurp) && ${pkgs.grim}/grim -g \"$selection\" - | tee ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png";
+        "${modifier}+Shift+s" = "exec mkdir -p ~/Pictures/Screenshots && selection=$(${pkgs.slurp}/bin/slurp) && ${pkgs.grim}/bin/grim -g \"$selection\" - | tee ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png";
         "${modifier}+v" = "exec ${pkgs.cliphist}/bin/cliphist list | ${pkgs.fuzzel}/bin/fuzzel -d | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy"; # it's like that on windows
 
         # brightness
