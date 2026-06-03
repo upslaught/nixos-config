@@ -5,6 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [xdg-utils wl-clipboard antigravity-cli];
+  home.sessionVariables.NIXOS_OZONE_WL = "1"; # not sure where to put this
 
   programs = {
     foot = {
