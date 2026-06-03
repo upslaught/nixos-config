@@ -69,6 +69,12 @@
     };
   };
 
+  services.swayosd = {
+    enable = true;
+    topMargin = 0.9;
+    # stylePath = "${./swayosd.css}";
+  };
+
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -157,13 +163,24 @@
         "${modifier}+v" = "exec ${pkgs.cliphist}/bin/cliphist list | ${pkgs.fuzzel}/bin/fuzzel -d | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy"; # it's like that on windows
 
         # brightness
-        "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl -U 10";
-        "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl -A 10";
+        "XF86MonBrightnessUp" = "exec ${pkgs.swayosd}/bin/swayosd-client --brightness +10";
+        "XF86MonBrightnessDown" = "exec ${pkgs.swayosd}/bin/swayosd-client --brightness -10";
 
-        # volume
-        "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+";
-        "XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-";
-        "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+        # audio
+        "XF86AudioPlay" = "exec ${pkgs.swayosd}/bin/swayosd-client --playerctl play-pause";
+        "XF86AudioNext" = "exec ${pkgs.swayosd}/bin/swayosd-client --playerctl next";
+        "XF86AudioPrev" = "exec ${pkgs.swayosd}/bin/swayosd-client --playerctl previous";
+
+        # output
+        "XF86AudioRaiseVolume" = "exec ${pkgs.swayosd}/bin/swayosd-client --output-volume 5 --max-volume 100";
+        "XF86AudioLowerVolume" = "exec ${pkgs.swayosd}/bin/swayosd-client --output-volume -5 --max-volume 100";
+        "XF86AudioMute" = "exec ${pkgs.swayosd}/bin/swayosd-client --output-volume mute-toggle";
+
+        # input
+        "XF86AudioMicMute" = "exec ${pkgs.swayosd}/bin/swayosd-client --input-volume mute-toggle";
+
+        # capslock
+        "Caps_Lock" = "exec ${pkgs.swayosd}/bin/swayosd-client --caps-lock";
       };
 
       output."DP-1" = {
