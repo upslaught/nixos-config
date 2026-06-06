@@ -17,10 +17,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # niri = {
-    #   url = "github:sodiboo/niri-flake";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # plasma-manager = {
     #   url = "github:nix-community/plasma-manager";
@@ -68,6 +68,7 @@
                   inputs.preservation.nixosModules.preservation
                   inputs.stylix.nixosModules.stylix
                   inputs.home-manager.nixosModules.home-manager
+                  inputs.niri.nixosModules.niri
                   ./hosts/${hostname}
                   {
                     home-manager = {

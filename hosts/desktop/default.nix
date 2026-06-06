@@ -16,14 +16,10 @@
     ../../modules/system/brave-policies
     ../../modules/system/warp.nix
     ../../modules/system/nh.nix
-    ../../modules/system/sway.nix
+    ../../modules/system/niri.nix
     ../../modules/system/ld.nix
   ];
 
-  # environment.pathsToLink = [
-  #   "/share/applications"
-  #   "/share/xdg-desktop-portal"
-  # ];
   security.rtkit.enable = true;
 
   services = {

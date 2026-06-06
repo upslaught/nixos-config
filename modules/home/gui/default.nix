@@ -3,10 +3,9 @@
     ./brave.nix
     ./fuzzel.nix
     ./mako.nix
-    # ./plasma.nix
     ./social.nix
-    ./sway.nix
+    ./niri.nix
+    ./waybar.nix
     ./zed.nix
-    # ./niri.nix
   ];
 }
